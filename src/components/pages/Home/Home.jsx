@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Col, Container, Input, Row, Form } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
+import { Button, Col, Input, Row, Form } from 'reactstrap';
 
 export class Home extends Component {
 	state = {
@@ -13,6 +14,7 @@ export class Home extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.history.push(`/${this.state.userName}`);
 	};
 
 	render() {
@@ -31,7 +33,7 @@ export class Home extends Component {
 							onChange={this.handleChangeUsername}
 						/>
 					</Col>
-					<Button outline color='primary' className='ml-3'>
+					<Button outline color='primary' className='ml-3' type='submit'>
 						Submit
 					</Button>
 				</Row>
@@ -40,4 +42,4 @@ export class Home extends Component {
 	}
 }
 
-export default Home;
+export default withRouter(Home);
